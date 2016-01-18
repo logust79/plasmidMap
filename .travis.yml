@@ -6,7 +6,7 @@ perl:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install ncbi-blast+
-  - cpanm BioPerl
+  - cpanm BioPerl 
   - cpanm Bio::Tools::Run::StandAloneBlastPlus --force
   - cpanm Moose
   - cpanm Template
