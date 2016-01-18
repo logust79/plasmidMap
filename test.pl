@@ -1,0 +1,6 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Test::Simple tests => 1;
+
+ok(system("perl", "app.pl") == 0);
