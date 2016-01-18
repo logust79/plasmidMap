@@ -1,0 +1,5 @@
+upon updated features.fasta.nt,
+
+   makeblastdb -in features.fasta.nt -dbtype nucl
+
+(formatdb is outdated, which was suggested by Plasmapper)

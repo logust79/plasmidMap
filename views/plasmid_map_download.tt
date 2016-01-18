@@ -1,0 +1,5 @@
+[% IF ext == 'svg' %]
+	[% data %]
+[% ELSE %]
+	<img src="data:image/png;base64,[% data %]">
+[% END %]

@@ -1,0 +1,266 @@
+<html>
+<head>
+	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>OpenSPP--[% name %]</title>
+	<!-- Bootstrap -->
+	<link href="[% bootstrap_css %]" rel="stylesheet">
+	<link href="[% main_css %]" rel="stylesheet">
+
+	<style>
+	#container {
+		padding-bottom: 80px;
+	}
+	.footer {
+		position: fixed;
+		width: 100%;
+	}
+	.tt-dropdown-menu {
+		background-color: #FFFFFF;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		border-radius: 8px;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		margin-top: 12px;
+		padding: 8px;
+		max-height: 150px;
+		width: 300px;
+		overflow-y: auto;
+	}
+	[% IF !session.user %]
+
+	@media (min-width: 768px) and (max-width: 991px) {
+		.blank {
+			height: 50px;
+		}
+	}
+	[% END %]
+	.enzyme:hover, .feature:hover {
+	  opacity: 0.7;
+	  cursor: pointer;
+	}
+	</style>
+</head>
+    <body>
+        <div class="container content" ng-init="sample.size=[% map_size %]">
+		<div>
+			<svg width="0" height="0" id="svg-def">
+				<defs>
+					<filter id="dropshadow" height="120%">
+						<feGaussianBlur in="SourceAlpha" stdDeviation="5"/> 
+						<feOffset dx="2" dy="2" result="offsetblur"/> 
+						<feComponentTransfer>
+							<feFuncA type="linear" slope="0.3"/>
+						</feComponentTransfer>
+						<feMerge> 
+							<feMergeNode/> 
+							<feMergeNode in="SourceGraphic"/> 
+						</feMerge>
+					</filter>
+					<filter id="background">
+						<feFlood flood-color="white"/>
+						<feComposite in="SourceGraphic"/>
+					</filter>
+				</defs>	
+			</svg>        
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12" id="main-map">
+						<plasmid sequencelength="[% length %]" plasmidheight="{{sample.size}}" plasmidwidth="{{sample.size}}">
+							<plasmidtrack width="5" trackstyle='fill:#ccc;stroke:#999;filter:url(#dropshadow)' radius='{{(sample.size/4)}}'>
+								<tracklabel labelstyle="font-size:20px;font-weight:700;fill:#666;filter:url(#dropshadow)" text="[% name %]"></tracklabel>
+								<tracklabel labelstyle="font-size:12px;font-weight:400;fill:#999;filter:url(#dropshadow)" text="[% length %] bp" vadjust="18"></tracklabel>
+								<trackscale interval="100" style="stroke:#999;" vadjust="-25"></trackscale>
+								<trackscale interval="500" showlabels="1" style="stroke:#333;stroke-width:2px" ticksize="8" vadjust="-25" labelstyle="font-size:9px;fill:#666" labelvadjust="-15"></trackscale>
+								[% FOREACH e IN enzymes %]
+									<trackmarker start="[% e.position %]" end="[% e.position %]" >
+										<markerlabel class="enzyme" text="[% e.name %]" vadjust="[% e.vadj %]" hadjust="[% e.hadj %]" valign="outer" style="font-size:14px;font-weight:500;fill:[% e.colour %];filter:url(#background)" showline="1" linevadjust="-15" linelabelstyle="stroke:[% e.colour %];stroke-dasharray:2,2;stroke-width:2px;">
+										<title class="tip">[% e.name %]: [% e.site %], [% e.position %]</title></markerlabel>
+									</trackmarker>
+								[% END %]
+								[% FOREACH p IN primers %]
+									<a xlink:href="[% p.url %]" target="_blank"><trackmarker class="primer" start="[% p.start - 30 %]" end="[% p.end + 30 %]" markerstyle='fill:#7401DF;filter:url(#dropshadow);display:none;' 
+										[% IF p.orient == 1 %]
+											arrowendlength="5" arrowendwidth="8"
+										[% ELSIF p.orient == -1 %] 
+											arrowstartlength="5" arrowstartwidth="8"
+										[% END %]
+										wadjust="-10" vadjust="25">
+										<title>[% p.name %] [[% p.start %]-[% p.end %]]</title>
+									</trackmarker></a>
+								[% END %]
+								[% FOREACH o IN orfs %]
+									<trackmarker class="feature" start="[% o.start %]" end="[% o.end %]" markerstyle='fill:[% o.colour.0 %];filter:url(#dropshadow)' 
+										[% IF o.orient == 1 %]
+											arrowendlength="10" arrowendwidth="8"
+										[% ELSIF o.orient == -1 %] 
+											arrowstartlength="10" arrowstartwidth="8"
+										[% END %]
+										wadjust="-10" vadjust="-15">
+										<title>[% o.name %] [[% o.start %]-[% o.end %]]</title>
+									</trackmarker>
+								[% END %]
+								[% FOREACH m IN matches %]
+									<!-- when it is too short to show on the map...-->
+									[% IF (m.end - m.start) < 0.007 * length %]
+										<trackmarker class="feature" start="[% m.start %]" end="[% m.end %]" markerstyle='stroke:#000;fill:[% m.colour.0 %];filter:url(#dropshadow);' wadjust="10" vadjust="-5">
+											<markerlabel class="feature" type="path"></markerlabel>
+												<title>[% m.name %] [[% m.start %]-[% m.end %]]</title>
+											</markerlabel>
+										</trackmarker>
+							
+									[% ELSIF (m.end - m.start) < 0.03 * length %]
+										<trackmarker class="feature" start="[% m.start %]" end="[% m.end %]" markerstyle='stroke:#000;fill:[% m.colour.0 %];filter:url(#dropshadow)' 
+											[% IF m.orient == 1 %]
+												arrowendlength="3" arrowendwidth="1"
+											[% ELSIF m.orient == -1 %] 
+												arrowstartlength="3" arrowstartwidth="1"
+											[% END %]
+											wadjust="10" vadjust="-5">
+											<markerlabel class="feature" type="path"></markerlabel>
+												<title>[% m.name %] [[% m.start %]-[% m.end %]]</title>
+											</markerlabel>
+										</trackmarker>
+
+									[% ELSE %]
+										<trackmarker class="feature" start="[% m.start %]" end="[% m.end %]" markerstyle='stroke:#000;fill:[% m.colour.0 %];filter:url(#dropshadow)' 
+											[% IF m.orient == 1 %]
+												arrowendlength="10" arrowendwidth="5"
+											[% ELSIF m.orient == -1 %] 
+												arrowstartlength="10" arrowstartwidth="5"
+											[% END %]
+											wadjust="10" vadjust="-5">
+											<markerlabel class="feature" type="path" text="[% m.abbr %]" labelstyle="font-size:10px;font-weight:400;fill:[% m.colour.1 %];" ></markerlabel>
+												<title>[% m.name %] [[% m.start %]-[% m.end %]]</title>
+											</markerlabel>
+										</trackmarker>
+									[% END %]
+								[% END %]
+							</plasmidtrack>
+						</plasmid>
+					</div>
+                </div><!--plasmid row-->
+                <div class="row" style="margin-top:40px;">
+                	<div class="col-md-3">
+                		<button class="round-button" style="font-size:15px;" id="toggle-primer">Show primers</button>
+                	</div>
+                	[% IF editable %]
+						<div class="col-md-3">
+							<button class="round-button tip" id="savemap-btn" title="Save image to database">SAVE</button>
+						</div>
+                	[% END %]
+                	<div class="col-md-3">
+                		<button class="round-button tip" id="svg-button" title="Download map as SVG">SVG</button>
+                	</div>
+                	<div class="col-md-3">
+                		<button class="round-button tip" id="png-button" title="Download map as PNG">PNG</button>
+                	</div>
+                </div>
+            </div><!--main map col-->
+            <!--###########################-->
+            <div class="col-md-6">
+            	<div class="row">
+            		<div class="col-md-12">
+						<form action="[% analyseUrl %]" method="post" role="form">
+							<div class="form-group">
+								<label for="select-enzymes">Write enzymes to cut the plasmid</label>
+								<input type="text" class="form-control" id="select-enzymes" name="enzymes" placeholder="BamHI HindIII"/>
+							</div>
+							<hr />
+							<div class="form-group">
+								<label>Add 1st feature</label><br />
+								from <input type="text" name="start" size="5"/> to <input type="text" name="end" size="5"/> as <input type="text" name="title" /> with orientation <input type="checkbox" name="ori0" value="1" />
+							</div>
+							<div class="form-group">
+								<label>Add 2nd feature</label><br />
+								from <input type="text" name="start" size="5"/> to <input type="text" name="end" size="5"/> as <input type="text" name="title" /> with orientation <input type="checkbox" name="ori1" value="1" />
+							</div>
+							<div class="form-group">
+								<label>Add 3rd feature</label><br />
+								from <input type="text" name="start" size="5"/> to <input type="text" name="end" size="5"/> as <input type="text" name="title" /> with orientation <input type="checkbox" name="ori2" value="1" />
+							</div>
+							<div class="form-group">
+								<label>Add 4th feature</label><br />
+								from <input type="text" name="start" size="5"/> to <input type="text" name="end" size="5"/> as <input type="text" name="title" /> with orientation <input type="checkbox" name="ori3" value="1" />
+							</div>
+							<input type='hidden' name='id' value='[% ID %]' />
+							<textarea style="display:none" name='map_data'>[% map_data %]</textarea>
+							<input type='submit' class='btn btn-primary' value='Process!'/>			
+						</form>
+					</div>
+				</div><!--end of row-->
+            </div><!--right-col-->
+		</div><!--row-->
+	</div>
+       
+	  <script src='[% jquery %]'></script>
+	  <!-- Include all compiled plugins (below), or include individual files -->
+	  <script src='[% bootstrap_js %]'></script>
+	  <script src='[% angularplasmid %]'></script>
+	  <script>
+// toggle primers on the map
+	  	$("#toggle-primer").on("click", function(){
+	  		if ($(this).html() == "Show primers"){
+	  			$(this).html("Hide primers");
+				$(".primer").each(function(){
+					$(this).css("display","inherit");
+				});
+	  		}else{
+	  			$(this).html("Show primers");
+				$(".primer").each(function(){
+					$(this).css("display","none");
+				});
+	  		}
+	  	});
+//-->
+
+	  	
+// download map as SVG or PNG
+	  	$("#svg-button").on("click", function(){
+	  		//check #def. if no, add it.
+	  		if (!$("#main-map defs").html()){
+	  			var def = $("#svg-def").html();
+				$("#main-map").children().prepend(def);
+	  		}
+	  		post('[% download %]', {ext: 'svg', data: $("#main-map").html()});
+	  	});
+	  	$("#png-button").on("click", function(){
+	  		//check #def. if no, add it.
+	  		if (!$("#main-map defs").html()){
+	  			var def = $("#svg-def").html();
+				$("#main-map").children().prepend(def);
+	  		}
+	  		post('[% download %]', {ext: 'png', data: $("#main-map").html()});
+	  	});
+//-->
+
+// def post
+function post(path, params, method) {
+    method = method || "post"; // Set method to post by default if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+         }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
+//-->
+	  </script>
+	</body>
+</html>
