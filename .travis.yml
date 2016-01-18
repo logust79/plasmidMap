@@ -3,4 +3,17 @@ perl:
   - "5.22"
   - "5.20"
   - "5.18"
-  
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install prodigal
+  - sudo apt-get install ncbi-blast+
+  - cpanm BioPerl
+  - cpanm Bio::Tools::Run::StandAloneBlastPlus --force
+  - cpanm Moose
+  - cpanm Template
+  - cpanm Try::Tiny
+  - cpanm Math::Trig
+  - cpanm File::Temp
+  - cpanm File::Slurp
+install: true
+
