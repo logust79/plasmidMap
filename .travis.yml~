@@ -18,8 +18,8 @@ before_install:
   - cpanm File::Slurp
   - wget https://github.com/hyattpd/Prodigal/archive/v2.6.1.tar.gz -O /tmp/prodigal.tar.gz
   - tar -xvf /tmp/prodigal.tar.gz
-  - cd /tmp/prodigal
+  - cd Prodigal-2.6.1
   - make install
-  - cd -
+  - cd ..
 install: true
 
