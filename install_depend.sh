@@ -21,6 +21,7 @@ if [ $ver -ge 24 ] ; then
 	cpanm Math::Trig
 	cpanm File::Temp
 	cpanm File::Slurp
+	cpanm Starman
 	wget https://github.com/hyattpd/Prodigal/archive/v2.6.1.tar.gz -O /tmp/prodigal.tar.gz
 	tar -xvf /tmp/prodigal.tar.gz
 	cd Prodigal-2.6.1
