@@ -15,4 +15,5 @@ before_install:
   - cpanm Math::Trig
   - cpanm File::Temp
   - cpanm File::Slurp
-  
+install: true
+
