@@ -81,7 +81,6 @@ use Try::Tiny;
 use IPC::Run;
 use File::Temp;
 use File::Slurp;
-use MIME::Base64;
 use Template;
 use Bio::Restriction::EnzymeCollection;
 use Bio::Restriction::Analysis;

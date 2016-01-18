@@ -1,4 +1,4 @@
-BLASTN 2.2.29+
+BLASTN 2.2.28+
 
 
 Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
@@ -19,10 +19,10 @@ Length=9772
                                                                       Score     E
 Sequences producing significant alignments:                          (Bits)  Value
 
-  p15A_replication_origin[ORI]{p15A},913 bases, 1FE4 checksum          1794   0.0  
-  tetracycline_resistance_ORF[SEL]{tet},1191 bases, BF8 checksum       1748   0.0  
-  chloramphenicol_acetyltransferase(CAT)_ORF[SEL]{CAT},657 bases,...   1292   0.0  
-  pBR322_replication_origin[ORI]{pBR322},620 bases, 1CD4 checksum       182   1e-46
+  p15A_replication_origin[ORI]{p15A},913 bases, 1FE4 checksum         1794    0.0  
+  tetracycline_resistance_ORF[SEL]{tet},1191 bases, BF8 checksum      1748    0.0  
+  chloramphenicol_acetyltransferase(CAT)_ORF[SEL]{CAT},657 bases,...  1292    0.0  
+  pBR322_replication_origin[ORI]{pBR322},620 bases, 1CD4 checksum      182    1e-46
   trpE[SEL]{trpE},1050 bases, A62 checksum                            61.9    4e-10
   2_micron_replication_origin[ORI]{2micron},1472 bases, 1030 chec...  58.0    6e-09
 
@@ -30,7 +30,7 @@ Sequences producing significant alignments:                          (Bits)  Val
 > p15A_replication_origin[ORI]{p15A},913 bases, 1FE4 checksum.
 Length=913
 
- Score =  1794 bits (905),  Expect = 0.0
+ Score = 1794 bits (905),  Expect = 0.0
  Identities = 912/913 (99%), Gaps = 1/913 (0%)
  Strand=Plus/Plus
 
@@ -99,7 +99,7 @@ Query  1480  CGATATAAGTTGT  1492
 Sbjct  901   CGATATAAGTTGT  913
 
 
- Score =  1794 bits (905),  Expect = 0.0
+ Score = 1794 bits (905),  Expect = 0.0
  Identities = 912/913 (99%), Gaps = 1/913 (0%)
  Strand=Plus/Plus
 
@@ -171,7 +171,7 @@ Sbjct  901   CGATATAAGTTGT  913
 > tetracycline_resistance_ORF[SEL]{tet},1191 bases, BF8 checksum.
 Length=1191
 
- Score =  1748 bits (882),  Expect = 0.0
+ Score = 1748 bits (882),  Expect = 0.0
  Identities = 897/902 (99%), Gaps = 0/902 (0%)
  Strand=Plus/Plus
 
@@ -240,7 +240,7 @@ Query  3411  GA  3412
 Sbjct  1190  GA  1191
 
 
- Score =  1748 bits (882),  Expect = 0.0
+ Score = 1748 bits (882),  Expect = 0.0
  Identities = 897/902 (99%), Gaps = 0/902 (0%)
  Strand=Plus/Plus
 
@@ -309,7 +309,7 @@ Query  8297  GA  8298
 Sbjct  1190  GA  1191
 
 
- Score =   581 bits (293),  Expect = 2e-166
+ Score =  581 bits (293),  Expect = 2e-166
  Identities = 293/293 (100%), Gaps = 0/293 (0%)
  Strand=Plus/Plus
 
@@ -334,7 +334,7 @@ Query  1820  CTTGGAGCCACTATCGACTACGCGATCATGGCGACCACACCCGTCCTGTGGAT  1872
 Sbjct  241   CTTGGAGCCACTATCGACTACGCGATCATGGCGACCACACCCGTCCTGTGGAT  293
 
 
- Score =   581 bits (293),  Expect = 2e-166
+ Score =  581 bits (293),  Expect = 2e-166
  Identities = 293/293 (100%), Gaps = 0/293 (0%)
  Strand=Plus/Plus
 
@@ -359,7 +359,7 @@ Query  6706  CTTGGAGCCACTATCGACTACGCGATCATGGCGACCACACCCGTCCTGTGGAT  6758
 Sbjct  241   CTTGGAGCCACTATCGACTACGCGATCATGGCGACCACACCCGTCCTGTGGAT  293
 
 
- Score =   186 bits (94),  Expect = 9e-48
+ Score =  186 bits (94),  Expect = 9e-48
  Identities = 94/94 (100%), Gaps = 0/94 (0%)
  Strand=Plus/Plus
 
@@ -372,7 +372,7 @@ Query  3976  ATCATGCAACTCGTAGGACAGGTGCCGGCAGCGC  4009
 Sbjct  661   ATCATGCAACTCGTAGGACAGGTGCCGGCAGCGC  694
 
 
- Score =   186 bits (94),  Expect = 9e-48
+ Score =  186 bits (94),  Expect = 9e-48
  Identities = 94/94 (100%), Gaps = 0/94 (0%)
  Strand=Plus/Plus
 
@@ -385,7 +385,7 @@ Query  8862  ATCATGCAACTCGTAGGACAGGTGCCGGCAGCGC  8895
 Sbjct  661   ATCATGCAACTCGTAGGACAGGTGCCGGCAGCGC  694
 
 
- Score =   115 bits (58),  Expect = 3e-26
+ Score =  115 bits (58),  Expect = 3e-26
  Identities = 58/58 (100%), Gaps = 0/58 (0%)
  Strand=Plus/Minus
 
@@ -394,7 +394,7 @@ Query  8892  GCGCCCAACAGTCCCCCGGCCACGGGGCCTGCCACCATACCCACGCCGAAACAAGCGC  8949
 Sbjct  467   GCGCCCAACAGTCCCCCGGCCACGGGGCCTGCCACCATACCCACGCCGAAACAAGCGC  410
 
 
- Score =   115 bits (58),  Expect = 3e-26
+ Score =  115 bits (58),  Expect = 3e-26
  Identities = 58/58 (100%), Gaps = 0/58 (0%)
  Strand=Plus/Minus
 
@@ -407,7 +407,7 @@ Sbjct  467   GCGCCCAACAGTCCCCCGGCCACGGGGCCTGCCACCATACCCACGCCGAAACAAGCGC  410
 1842 checksum.
 Length=660
 
- Score =  1292 bits (652),  Expect = 0.0
+ Score = 1292 bits (652),  Expect = 0.0
  Identities = 658/660 (99%), Gaps = 0/660 (0%)
  Strand=Plus/Minus
 
@@ -456,7 +456,7 @@ Query  5046  TTCTTTACGATGCCATTGGGATATATCAACGGTGGTATATCCAGTGAtttttttCTCCAT  5105
 Sbjct  60    TTCTTTACGATGCCATTGGGATATATCAACGGTGGTATATCCAGTGATTTTTTTCTCCAT  1
 
 
- Score =   866 bits (437),  Expect = 0.0
+ Score =  866 bits (437),  Expect = 0.0
  Identities = 440/441 (99%), Gaps = 0/441 (0%)
  Strand=Plus/Minus
 
@@ -493,7 +493,7 @@ Query  9752  ACCGTCTTTCATTGCCATACG  9772
 Sbjct  240   ACCGTCTTTCATTGCCATACG  220
 
 
- Score =   432 bits (218),  Expect = 9e-122
+ Score =  432 bits (218),  Expect = 9e-122
  Identities = 218/218 (100%), Gaps = 0/218 (0%)
  Strand=Plus/Minus
 
@@ -517,7 +517,7 @@ Sbjct  38   ATATCAACGGTGGTATATCCAGTGATTTTTTTCTCCAT  1
 > pBR322_replication_origin[ORI]{pBR322},620 bases, 1CD4 checksum.
 Length=620
 
- Score =   182 bits (92),  Expect = 1e-46
+ Score =  182 bits (92),  Expect = 1e-46
  Identities = 126/136 (93%), Gaps = 1/136 (1%)
  Strand=Plus/Minus
 
@@ -534,7 +534,7 @@ Query  5849  TGCGCTCTCCTGTTCC  5864
 Sbjct  489   TGCGCTCTCCTGTTCC  474
 
 
- Score =   182 bits (92),  Expect = 1e-46
+ Score =  182 bits (92),  Expect = 1e-46
  Identities = 126/136 (93%), Gaps = 1/136 (1%)
  Strand=Plus/Minus
 
@@ -551,7 +551,7 @@ Query  963  TGCGCTCTCCTGTTCC  978
 Sbjct  489  TGCGCTCTCCTGTTCC  474
 
 
- Score =   176 bits (89),  Expect = 9e-45
+ Score =  176 bits (89),  Expect = 9e-45
  Identities = 134/149 (90%), Gaps = 0/149 (0%)
  Strand=Plus/Minus
 
@@ -568,7 +568,7 @@ Query  6050  AAAGCACCACTGGCAGCAGCCACTGGTAA  6078
 Sbjct  271   TTATCGCCACTGGCAGCAGCCACTGGTAA  243
 
 
- Score =   176 bits (89),  Expect = 9e-45
+ Score =  176 bits (89),  Expect = 9e-45
  Identities = 134/149 (90%), Gaps = 0/149 (0%)
  Strand=Plus/Minus
 

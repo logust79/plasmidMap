@@ -1,4 +1,4 @@
-<form action="http://localhost:5000/plasmidDraw" method="POST">
+<form action="http://localhost:3000/plasmidDraw" method="POST">
     <input name="json" value='{
     "primers":
     [
