@@ -15,5 +15,10 @@ before_install:
   - cpanm Math::Trig
   - cpanm File::Temp
   - cpanm File::Slurp
+  - wget https://github.com/hyattpd/Prodigal/archive/v2.6.1.tar.gz -O /tmp/prodigal.tar.gz
+  - tar -xvf /tmp/prodigal.tar.gz
+  - cd /tmp/prodigal
+  - make install
+  - cd -
 install: true
 
