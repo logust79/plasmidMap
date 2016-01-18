@@ -3,4 +3,4 @@ use strict;
 use warnings;
 use Test::Simple tests => 1;
 
-exit 0;
+ok(system("perl", "app.pl") == 0);
