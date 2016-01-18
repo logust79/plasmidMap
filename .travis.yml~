@@ -6,9 +6,6 @@ perl:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install ncbi-blast+
-  - sudo apt-get install libdb-dev
-  - sudo apt-get install graphviz
-  - sudo apt-get install libgd-dev
   - cpanm BioPerl 
   - cpanm Bio::Tools::Run::StandAloneBlastPlus --force
   - cpanm Moose
